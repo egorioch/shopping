@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <script th:inline="javascript">
+      let frontendData = [[${frontendData}]];
+    </script>
+</head>
+<body>
+<div id="app"></div>
+
+<script th:src="${isDevMode} ? 'http://localhost:8000/main.js' : '/js/main.js'"></script>
+</body>
+</html>

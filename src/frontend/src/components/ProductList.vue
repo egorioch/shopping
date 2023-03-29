@@ -22,7 +22,7 @@
             class="bg-red-darken-1"
             :href="'/product/' + product.id"
           >
-            Change
+            Select
           </v-btn>
 
           <v-spacer></v-spacer>
@@ -65,15 +65,9 @@ export default {
       show: false
     }
   },
-  async mounted() {
+  async created() {
     const dataPromise = await fetch(url, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
-      },
-      method: "GET",
-      withCredentials: false
+      method: "GET"
     }).then(response => response.json());
     this.productsList = await dataPromise;
     console.log("data: " + this.productsList)

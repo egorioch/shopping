@@ -1,7 +1,26 @@
 <template>
-  <v-card>
+  <v-container>
+    <v-card>
+      <v-card-item>
+        <div>
+          <div>Label: <input v-model="this.product.label"/></div>
+          <div>id: {{ this.product.id }}</div>
+          <div>Creation time: {{ this.product.creation_time }}</div>
+          <div>Description: {{ this.product.description }}</div>
+          <div>Discount information: {{ this.product.discount_information }}</div>
+          <div>Label: {{ this.product.label }}</div>
+          <div>Organization: {{ this.product.organization }}</div>
+          <div>Price: {{ this.product.price }}</div>
+          <div>Quantity: {{ this.product.quantity }}</div>
+        </div>
+      </v-card-item>
 
-  </v-card>
+      <v-card-actions>
+        <v-btn variant="outlined" @click="">Save</v-btn>
+      </v-card-actions>
+
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -11,19 +30,20 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      product: null,
+      product: {},
     }
   },
-  async mounted() {
+  async created() {
     const dataPromise = await fetch(url + this.id, {
-      method: "post",
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      withCredentials: false
-    }).then(res => res.json).then(result => console.log("dataPromise: " + result));
-    this.product = dataPromise;
+      method: "GET",
+    }).then(response => response.json());
+    this.product = await dataPromise;
+    console.log("productAwait: " + JSON.stringify(this.product));
   },
+  methods: {
+    async save(product) {
+
+    }
+  }
 }
 </script>

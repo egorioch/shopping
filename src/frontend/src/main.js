@@ -6,7 +6,7 @@ import 'vuetify/styles'
 import {createVuetify} from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from 'vuetify/directives'
-import cors from '@/c'
+import * as cors from 'cors'
 
 const vuetify = createVuetify({
   components,
@@ -16,6 +16,7 @@ const vuetify = createVuetify({
 createApp(App)
   .use(router)
   .use(vuetify)
+  .use(cors)
   .mount('#app')
 
 

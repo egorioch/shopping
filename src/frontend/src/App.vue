@@ -1,15 +1,16 @@
 <template>
-  <div class="nav">
-    <router-link to="/product">Products</router-link>
-  </div>
-  <router-view />
+  <v-app>
+    <navbar-side></navbar-side>
+  </v-app>
 </template>
 
 <script>
 
+import NavbarSide from "@/components/bar/NavbarSide.vue";
 
 export default {
   name: 'App',
+  components: {NavbarSide},
 
 }
 </script>

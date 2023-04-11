@@ -3,7 +3,9 @@ import {createRouter, createWebHistory} from "vue-router";
 import ProductList from "@/components/ProductList.vue";
 import App from "@/App.vue";
 import UserProfile from "@/components/UserProfile.vue"
-import ProductForm from "@/components/ProductForm.vue";
+import ProductChangeForm from "@/components/ProductChangeForm.vue";
+import ProductCreateForm from "@/components/ProductCreateForm.vue";
+import RegistrationComponent from '@/components/auth/RegistrationComponent.vue'
 
 export default createRouter({
   history: createWebHistory(),
@@ -26,7 +28,17 @@ export default createRouter({
     {
       path: '/product/:id',
       name: 'productForm',
-      component: ProductForm
+      component: ProductChangeForm
+    },
+    {
+      path: '/product/create',
+      name: 'productCreate',
+      component: ProductCreateForm
+    },
+    {
+      path: '/registration',
+      name: 'RegistrationComponent',
+      component: RegistrationComponent
     }
   ]
 })

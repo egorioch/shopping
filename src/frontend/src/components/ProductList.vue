@@ -1,5 +1,13 @@
 <template>
   <v-main>
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="12" sm="6" md="4">
+          <v-btn block rounded="lg" size="x-large" :href="'/product/create'">Создать</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+
     <v-container
       v-for="product in productsList"
       :key="product.id"
@@ -68,10 +76,12 @@ export default {
   async created() {
     const dataPromise = await fetch(url, {
       method: "GET"
-    }).then(response => response.json());
+    })
+      .then(response => response.json());
+
     this.productsList = await dataPromise;
     console.log("data: " + this.productsList)
-  }
+  },
 }
 </script>
 
